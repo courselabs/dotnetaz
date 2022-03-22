@@ -16,7 +16,7 @@ These are hands-on resources to help you learn .NET on Azure.
 ## Azure Quickstart
 
 - [Signing In](labs/signin/README.md)
-- [Regions and Resource Groups]()
+- [Regions and Resource Groups](labs/resourcegroups/README.md)
 - [SQL Server]
 - [KeyVault]
 - [Networking]
@@ -25,7 +25,7 @@ These are hands-on resources to help you learn .NET on Azure.
 ## Containers on Azure
 
 - [ACR Images]
-- [Azure Container Instancea]
+- [Azure Container Instances]
 - [Kubernetes 101]
 - [Azure Kubernetes Service]
 - [Storage and Configuration]

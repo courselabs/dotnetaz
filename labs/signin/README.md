@@ -4,6 +4,9 @@
 
 - [Subscriptions](https://docs.microsoft.com/en-gb/learn/modules/configure-subscriptions/3-implement-azure-subscriptions)
 
+- Reference docs https://docs.microsoft.com/en-gb/azure/?product=popular
+- AZ CLI https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest
+
 
 ## Signing in with the Azure Portal
 
@@ -15,6 +18,8 @@ Explore subscription details
 
 
 ## Using the Azure CLI
+
+az
 
 az login
 
@@ -30,5 +35,9 @@ shell.azure.com
 - powershell or bash
 - az cli
 - other tools
+
+az account list
+
+> Already signed in
 
 
