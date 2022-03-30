@@ -20,6 +20,15 @@
 
 ## Create a Virtual Network with the CLI
 
+  az network vnet create -g $rgname `
+    -n $vnetName --address-prefix $addressPrefix | Out-Null
+
+  az network vnet subnet create -g $rgname --vnet-name $vnetName `
+    -n $hdiSubnetName --address-prefixes $hdisubnetPrefix | Out-Null
+
+    
+  az network vnet subnet create -g $rgname --vnet-name $vnetName `
+    -n $redisSubnetName --address-prefixes $redisSubnetPrefix | Out-Null
 
 - two subnets
 
