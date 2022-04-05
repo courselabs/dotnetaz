@@ -125,5 +125,4 @@ az group delete -n labs-rg-1
 
 Sometimes you do want to delete all the resources that match in a query. How can you delete all the RGs with the courselabs tag with a single command?
 
-
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
