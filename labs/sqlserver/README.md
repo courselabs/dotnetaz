@@ -143,3 +143,13 @@ SELECT * FROM students
 Use CLI to delete the SQL database. When the database is gone the SQL Server still exists - can you retrieve the data? Now delete the resource group, does the SQL Server still exist?
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
+
+___
+
+## Cleanup
+
+You can delete the RG for this lab to remove all the resources:
+
+```
+az group delete -y -n labs-sqlserver
+```

@@ -154,3 +154,15 @@ Container images are static packages - they're really just ZIP files with all yo
 Typically things change between environments though, so you need a way to inject configuration settings into the app when you run a container. The simplest way to do that is with environment variables, which you can set when you run the container and get read by the .NET configuration system. The simple web app uses a config setting to show the environment name - run a new container listening on port 8084 which shows the environment name `PROD` on the homepage.
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
+
+___
+
+## Cleanup
+
+You'll have lots of containers running, but containers are intended to be disposable.
+
+Run this command to remove them all:
+
+```
+docker rm -f $(docker ps -aq)
+```

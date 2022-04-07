@@ -127,3 +127,13 @@ A common use for a Key Vault is for automated deployments. You'll create the Key
 In that scenario you only want the Key Vault to be accessible while the pipeline is running. How can you lock down a Key Vault so it can't be used when the pipeline has finished?
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
+
+___
+
+## Cleanup
+
+You can delete the RG for this lab to remove all the resources:
+
+```
+az group delete -y -n labs-keyvault
+```

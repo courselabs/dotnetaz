@@ -170,3 +170,15 @@ Azure also supports a _declarative_ approach where you describe what the end res
 Try exporting an ARM template for the `labs-vnet` Resource Group> Can you use it to deploy a copy of the resources in a new RG called `labs-vnet2`?
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
+
+___
+
+## Cleanup
+
+You can delete the RGs for this lab to remove all the resources:
+
+```
+az group delete -y -n labs-vnet
+
+az group delete -y -n labs-vnet2
+```
