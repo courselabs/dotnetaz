@@ -20,7 +20,7 @@ These are hands-on resources to help you learn .NET on Azure.
 - [SQL Server](labs/sqlserver/README.md)
 - [KeyVault](labs/keyvault/README.md)
 - [Networking](labs/keyvault/README.md)
-- [Docker 101]
+- [Docker 101](labs/docker/README.md)
 
 ## Containers on Azure
 

@@ -116,14 +116,14 @@ Run `exit` to leave the interactive container and come back to your terminal ses
 
 Building apps inside a container is a good way of experimenting, but the real value of Docker is in packaging your own Docker images:
 
-- this [Dockerfile](./simple-web/Dockerfile) is a script which packages an ASP.NET app in Docker. It uses the SDK image to build the app and the ASP.NET image to run the app.
+- this [Dockerfile](/src/simple-web/Dockerfile) is a script which packages an ASP.NET app in Docker. It uses the SDK image to build the app and the ASP.NET image to run the app.
 
 There's a lot more you can do with Dockerfiles, but this is a good start. You can build and run a .NET 6.0 app without installing .NET 6.0 on your machine.
 
 Run this to build an image called `simple-web` from the Dockerfile and the source code:
 
 ```
-docker build -t simple-web labs/docker/simple-web
+docker build -t simple-web src/simple-web
 ```
 
 You'll see familiar `dotnet` commands in the Docker output.
@@ -145,7 +145,7 @@ docker run -d -p 8083:80 simple-web
 
 > Browse to http://localhost:8083 to see the app
 
-The app is very simple, but you can improve it. Edit code in the `labs/docker/simple-web/src` folder and run the build command again to package up your changes. You can't repeat the same run command though - why is that?
+The app is very simple, but you can improve it. Edit code in the `src/simple-web/src` folder and run the build command again to package up your changes. You can't repeat the same run command though - why is that?
 
 ## Lab
 
