@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace Courselabs.QueueWorker;
 
 public class Worker : BackgroundService
@@ -13,6 +15,7 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        var host = Dns.GetHostName();
         var cachePath = _config["Paths:Cache"];
         var dbPath = _config["Paths:Database"];
         var tmpPath = _config["Paths:Temp"];
@@ -23,9 +26,9 @@ public class Worker : BackgroundService
         {
             var now = DateTime.UtcNow;
             _logger.LogDebug($"Worker writing data at: {now}");
-            await File.WriteAllTextAsync(Path.Combine(cachePath, "app.cache"), $"Cache updated at: {now}");
-            await File.WriteAllTextAsync(Path.Combine(dbPath, "app.db"), $"Db updated at: {now}");
-            await File.WriteAllTextAsync(Path.Combine(tmpPath, Guid.NewGuid().ToString().Substring(0,6)), $"Temp file written at: {now}");
+            await File.WriteAllTextAsync(Path.Combine(cachePath, "app.cache"), $"Cache updated at: {now}, by: {host}");
+            await File.WriteAllTextAsync(Path.Combine(dbPath, "app.db"), $"Db updated at: {now}, by: {host}");
+            await File.WriteAllTextAsync(Path.Combine(tmpPath, Guid.NewGuid().ToString().Substring(0,6)), $"Temp file written at: {now}, by: {host}");
             
             var sleep = _config.GetValue<int>("App:SleepMilliseconds", 3000);
             _logger.LogDebug($"Worker sleeping for: {sleep}ms");
