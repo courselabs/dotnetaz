@@ -26,10 +26,10 @@ These are hands-on resources to help you learn .NET on Azure.
 
 - [ACR Images](labs/acr/README.md)
 - [Azure Container Instances](labs/aci/README.md)
-- [Kubernetes 101]
-- [Azure Kubernetes Service]
-- [Storage and Configuration]
-- [AKS Add-ons]
+- [Kubernetes 101](labs/kubernetes/README.md)
+- [Azure Kubernetes Service](labs/aks/README.md)
+- [Storage and Configuration](labs/storage/README.md)
+- [Ingress and Application Gateway](labs/ingress/README.md)
 
 ## Azure DevOps Quickstart
 
