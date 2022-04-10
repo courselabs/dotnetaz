@@ -4,7 +4,7 @@ The great thing about Docker containers is they're portable - your app runs in t
 
 ## Reference
 
-- [Container Instanceas documentation](https://docs.microsoft.com/en-gb/azure/container-instances/)
+- [Container Instances documentation](https://docs.microsoft.com/en-gb/azure/container-instances/)
 
 - [`az container` commands](https://docs.microsoft.com/en-us/cli/azure/container?view=azure-cli-latest)
 
@@ -21,7 +21,7 @@ Open the Portal and search to create a new Container Instance resource. Look at 
 
 You can run Linux and Windows containers with ACI, so you can run .NET Core and .NET Framework apps. The UX is the same - we'll see how the service works using the command line.
 
-## Create ACI group with the CLI
+## Create an ACI container with the CLI
 
 Start with a new Resource Group for the lab, using your preferred region:
 

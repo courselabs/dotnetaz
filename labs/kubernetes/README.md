@@ -6,6 +6,12 @@ Kubernetes is a container platform. It runs applications using the same containe
 
 - [Pod docs](https://kubernetes.io/docs/concepts/workloads/pods/) and [Pod API spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#pod-v1-core)
 
+- [Services](https://kubernetes.io/docs/concepts/services-networking/service/) and [Service API spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#service-v1-core)
+
+- [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [ConfigMap API spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#configmap-v1-core)
+
+- [Pod controllers](https://kubernetes.io/docs/concepts/architecture/controller/) and [Deployment API spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#deployment-v1-apps)
+
 ## Nodes
 
 Make sure you have Docker Desktop configured to run Kubernetes (see the [setup guide](/setup/README.md)). A Kubernetes environment is called a _cluster_ and a cluster has one or more machines which can run containers. The machines in a cluster are called _nodes_. Docker Desktop gives you a single-node cluster running on your machine, and it also sets up the Kubernetes command line `kubectl`.
