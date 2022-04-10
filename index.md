@@ -24,8 +24,8 @@ These are hands-on resources to help you learn .NET on Azure.
 
 ## Containers on Azure
 
-- [ACR Images]
-- [Azure Container Instances]
+- [ACR Images](labs/acr/README.md)
+- [Azure Container Instances](labs/aci/README.md)
 - [Kubernetes 101]
 - [Azure Kubernetes Service]
 - [Storage and Configuration]
