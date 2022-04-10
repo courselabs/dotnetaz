@@ -127,11 +127,6 @@ The IP address is your application's public IP address. Browse to it and you'll 
 ## Lab
 
 We have spare capacity in the AKS cluster, so we can run more Pods to serve more users. Investigate how you can change the Deployment spec to run 4 Pods for the web application. You'll need to edit the YAML and apply the changes. When you have multiple Pods running, what happens if you repeatedly refresh the website in your browser?
-## Lab
-
-You can migrate all your .NET apps to containers, but you'll need to use Windows containers for older .NET Framework apps. Docker Desktop on Windows supports Linux and Windows containers (you can switch from the Docker icon in the taskbar), and so does ACI.
-
-The [simple-web image](https://hub.docker.com/r/courselabs/simple-web/tags) has been published with Windows and Linux variants. Run an ACI container from the Windows image version, how does it differ from the Linux version? Then see what happens if you try to run the Linux image which has been compiled for ARM processors instead of Intel/AMD.
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
 
