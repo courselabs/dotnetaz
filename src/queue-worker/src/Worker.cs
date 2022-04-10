@@ -26,8 +26,8 @@ public class Worker : BackgroundService
         {
             var now = DateTime.UtcNow;
             _logger.LogDebug($"Worker writing data at: {now}");
-            await File.WriteAllTextAsync(Path.Combine(cachePath, "app.cache"), $"Cache updated at: {now}, by: {host}");
-            await File.WriteAllTextAsync(Path.Combine(dbPath, "app.db"), $"Db updated at: {now}, by: {host}");
+            await File.AppendAllTextAsync(Path.Combine(cachePath, "app.cache"), $"Cache appended at: {now}, by: {host}");
+            await File.AppendAllTextAsync(Path.Combine(dbPath, "app.db"), $"Db appended at: {now}, by: {host}");
             await File.WriteAllTextAsync(Path.Combine(tmpPath, Guid.NewGuid().ToString().Substring(0,6)), $"Temp file written at: {now}, by: {host}");
             
             var sleep = _config.GetValue<int>("App:SleepMilliseconds", 3000);
