@@ -1,6 +1,7 @@
 # Azure Signin
 
-Azure uses Microsoft accounts to authenticate and authorize. In a corporate environment your account would be managed for you, but you can create your own personal account and create an Azure Subscription for yor own use. One account can have permissions on multiple Subscriptions.
+Azure uses Microsoft accounts to authenticate and authorize. In a corporate environment your account would be managed for you, but you can create your own personal account and create an Azure Subscription for your own use. One account can have permissions on multiple Subscriptions.
+
 ## Reference
 
 - [Subscriptions](https://docs.microsoft.com/en-gb/learn/modules/configure-subscriptions/3-implement-azure-subscriptions)
@@ -27,7 +28,7 @@ Open the [All Services](https://portal.azure.com/#allservices) view. This is whe
 
 ## Using the Azure CLI
 
-The [az]() command line is another option for interacting with Azure. It's the tool I recommend because:
+The [az](https://docs.microsoft.com/en-us/cli/azure/) command line is another option for interacting with Azure. It's the tool I recommend because:
 
 - it's one of the first to be updated with new features and services
 - it has integrated help

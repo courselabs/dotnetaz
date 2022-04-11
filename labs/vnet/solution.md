@@ -37,7 +37,10 @@ az vm show -g labs-vnet -n vm01 --show-details --query publicIps -o tsv
 
 ssh <vm01-public-ip>
 
+# inside the VM:
 ip address
+
+exit
 ```
 
 The new VM should have the same private IP address as the other VM, but it's in a different vnet in a different RG.

@@ -92,14 +92,14 @@ We added the same tag to both RGs. Tags are simple key-value pairs which you can
 You can add a query parameter to `list` commands to filter the results. Complete this query to print RGs which have the matching tag:
 
 ```
-az group list -o table --query "[?tags.
+az group list -o table --query "[?tags ...
 ```
 
 > The query parameter uses [JMESPath](http://jmespath.org/), a JSON query language. Results find all matching RGs across all regions.
 
 ## Delete Resource Groups
 
-The `group delete` command removes a Resource Group - and any resources inside that group. You can have an RG with five Hadoop clusters and hundreds of Docker containers, and deleting the group will stop them all and delete the data.
+The `group delete` command removes a Resource Group - and any resources inside that group. You can have an RG with five Hadoop clusters and hundreds of Docker containers, and deleting the group will stop and remove the services and delete the data.
 
 Because resource deletion is dangerous, the `az` command doesn't let you delete multiple groups based on a query. Try this - it will fail:
 

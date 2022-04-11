@@ -91,7 +91,7 @@ Create a Linux VM running Ubuntu Server:
 az vm create -g labs-vnet -n vm01 --image UbuntuLTS --vnet-name vnet1 --subnet frontend
 ```
 
-This command takes care of setting up [SSH]() so you can log into the remote machine. The output shows you the public IP address - use that to connect:
+This command takes care of setting up [SSH](https://en.wikipedia.org/wiki/Secure_Shell) so you can log into the remote machine. The output shows you the public IP address you'll use to connect.
 
 📋 If you wanted to create a Windows VM, you'd need to use a different image. Can you find a Windows Server 2019 image name with an `az` command?
 
@@ -144,9 +144,12 @@ ssh <vm01-public-ip>
 
 # now in the VM session:
 ip address
+
+# exit back to your own machine:
+exit
 ```
 
-VMs only know about their local IP address on the vnet. The public IP address is managed otuside of the machine; the private IP is assigned by the vnet and you should see it in the 10.10.1.x range.
+VMs only know about their local IP address on the vnet. The public IP address is managed otuside of the machine; the private IP is assigned by the vnet and you should see it in the `10.10.1.x` range.
 
 ## Explore Networking in the Portal
 
@@ -167,7 +170,7 @@ The `az` command is a great tool, but it has one drawback: it's an _imperative_ 
 
 Azure also supports a _declarative_ approach where you describe what the end result should be. These are [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/) - and you can run them repeatedly and always get the same result.
 
-Try exporting an ARM template for the `labs-vnet` Resource Group> Can you use it to deploy a copy of the resources in a new RG called `labs-vnet2`?
+Try exporting an ARM template for the `labs-vnet` Resource Group. Can you use it to deploy a copy of the resources in a new RG called `labs-vnet2`?
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
 
