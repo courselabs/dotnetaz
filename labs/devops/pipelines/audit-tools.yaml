@@ -6,8 +6,9 @@ pool:
 
 steps:
  - task: PowerShell@2
-   script: |
-     az --version
-     docker version
-     kubectl version --client
-     dotnet --list-sdks
+   inputs:
+    script: |
+      az --version
+      docker version
+      kubectl version --client
+      dotnet --list-sdks
