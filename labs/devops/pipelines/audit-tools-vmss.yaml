@@ -4,10 +4,28 @@ trigger:
 pool: linux01
 
 steps:
- - task: PowerShell@2
+ - task: Bash@3
+   displayName: Install Docker
    inputs:
+    targetType: inline
     script: |
-      az --version
-      docker version
+      curl -fsSL https://get.docker.com | sh
+
+ - task: Bash@3
+   displayName: Install Azure CLI
+   inputs:
+    targetType: inline
+    script: |
+      curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+   
+ - task: KubectlInstaller@0
+   displayName: Install Kubectl
+
+ - task: Bash@3
+   displayName: Audit tools
+   inputs:
+    targetType: inline
+    script: |
+      az version
+      sudo docker version
       kubectl version --client
-      dotnet --list-sdks

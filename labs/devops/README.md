@@ -33,12 +33,12 @@ We cloned this repository from GitHub but we can push a private copy to Azure De
 
 Copy the commands from the section _Push an existing repository from command line_ to a text file **but don't run them yet**.
 
-Change the name `origin` in the commands to `devops` (the original GitHub code already uses the name `origin`); so the commands will like this - you'll need your own organization name:
+Change the name `origin` in the commands to `devops` (the original GitHub code already uses the name `origin`); so the commands will look like this - you'll need your own organization name:
 
 ```
 git remote add devops https://<org-name>@dev.azure.com/<org-name>/dotnetaz/_git/dotnetaz
 
-git push -u devops --all
+git push -u devops main
 ```
 
 > A window will open asking you to sign in - use the same Microsoft ID you're using for Azure DevOps. 
@@ -98,19 +98,21 @@ When authorization completes, set up the pool:
 
 - select your VM Scale Set called `agentpool`
 - call the agent pool `linux01`
-- set the maxmimum number to `2`, the number on standby to `1` and the delete delay to `5` minutes
+- set the maxmimum number to `2`, the number on standby to `1` and the delete delay to `60` minutes
 - be sure to select _Grant access permission to all pipelines_
 - click _Create_
 
-This [Pipeline YAML]() uses the agent pool with the name `linux01`.
+This [Pipeline YAML]() uses the agent pool with the name `linux01`. There's more going on because we need to install the tools we want - the Microsoft hosted agents already have those installed.
 
-Browse to your Pipeline, select the ellipsis next to _Run pipeline_ and click _Settings_. Change the path to `labs/devops/pipelines/audit-tools-vmss.yaml`
+We'll switch the exising pipeline to use the new definition. Browse to your Pipeline, select the ellipsis next to _Run pipeline_ and click _Settings_. Change the path to `labs/devops/pipelines/audit-tools-vmss.yaml`
 
 Run the Pipeline and check the output. You'll see it gets queued. Open the Azure Portal and navigate to your VM Scale Set - select the _Instances_ section and you should see VMs starting or running. These were created by Azure DevOps to run the Pipeline job.
 
 The job may stay as _Queued_ for a long time - the first VMs added to the scale set can take 10+ minutes. Back in the Azure DevOps UI you can return to the project settings and agent pools to see what's happening with your `linux01` agent pool.
 
+When the job is running, check the output - you'll see all the tools being installed. Run the job again and it will finish more quickly because the tools are already there on the VM.
+
 ## Lab
 
-Edit the pipeline steps, push changes and watch in DevOps - does a new job get queued automatically?
+Edit the pipeline steps to run some more az commands. Can you list and create resource groups?
 

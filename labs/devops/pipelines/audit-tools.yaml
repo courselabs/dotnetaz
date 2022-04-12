@@ -5,10 +5,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
- - task: PowerShell@2
+ - task: Bash@3
+   displayName: Audit tools
    inputs:
     script: |
-      az --version
+      az version
       docker version
       kubectl version --client
-      dotnet --list-sdks
