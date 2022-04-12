@@ -1,0 +1,13 @@
+trigger:
+ - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+ - task: PowerShell@2
+   script: |
+     az --version
+     docker version
+     kubectl version --client
+     dotnet --list-sdks
