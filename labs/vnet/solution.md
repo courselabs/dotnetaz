@@ -33,7 +33,7 @@ The VM in the new RG will have a new public IP address (even though the original
 Fetch the new IP address and you can connect:
 
 ```
-az vm show -g labs-vnet -n vm01 --show-details --query publicIps -o tsv
+az vm show -g labs-vnet2 -n vm01 --show-details --query publicIps -o tsv
 
 ssh <vm01-public-ip>
 

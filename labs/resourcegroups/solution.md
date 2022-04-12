@@ -31,5 +31,5 @@ az group list -o tsv --query "[?tags.courselabs == 'dotnetaz'].name" | foreach {
 _In Bash:_
 
 ```
-for rg in $(az group list -o tsv --query "[?tags.courselabs == 'dotnetaz'].name"); do echo ${rg}; done
+for rg in $(az group list -o tsv --query "[?tags.courselabs == 'dotnetaz'].name"); do az group delete -y -n ${rg}; done
 ```
