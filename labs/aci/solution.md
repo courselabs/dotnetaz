@@ -6,7 +6,7 @@ You can use the `az` command with the multi-arch image tag and set the OS:
 az container create -g labs-aci --name simple-web-win --image courselabs/simple-web:6.0 --ports 80 --os Windows --dns-name-label <aci-win-dns>
 ```
 
-If you use the Windows image tag, ACI doesn't work out it needs to be a Windows container:
+ACI creates a Linux container if you don't specify the OS, so if you use the Windows image tag without telling ACI that it's Windows you'll get an error:
 
 ```
 # this will error saying the container OS doesn't match the image OS

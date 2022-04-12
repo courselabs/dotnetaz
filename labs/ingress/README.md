@@ -35,15 +35,15 @@ That will take a while to run, so we'll work with Ingress objects on our local c
 Ingress controllers are optional in most Kubernetes environments - Docker Desktop doesn't install one by default, but you can enable ingress by deploying this:
 
 ```
-kubectl apply -f \labs\ingress\specs\local-ingress-controller
+kubectl apply -f /labs/ingress/specs/local-ingress-controller
 ```
 
 That will create a lot of resources we haven't covered, but you can treat your ingress controller as a black box for now. It's job is to watch out for Ingress objects and set up the routing rules, linking domain names to your application Services.
 
 Now we need a web application we can use:
 
-- [labs\ingress\specs\simple-web\deployment.yaml](./specs/simple-web/deployment.yaml) - models the simple-web app, specifying the environment name config setting inside the Pod spec
-- [labs\ingress\specs\simple-web\service.yaml](./specs/simple-web/service.yaml) - makes the Pod accessible to other Pods on the network
+- [labs/ingress/specs/simple-web/deployment.yaml](./specs/simple-web/deployment.yaml) - models the simple-web app, specifying the environment name config setting inside the Pod spec
+- [labs/ingress/specs/simple-web/service.yaml](./specs/simple-web/service.yaml) - makes the Pod accessible to other Pods on the network
 
 > This uses a Service type of `ClusterIP`, which means the Service is only accessible within the cluster. The Ingress rule will reference this Service as the target, and the Ingress controller will route traffic to the Pod via this Service.
 
@@ -56,7 +56,7 @@ Now we need a web application we can use:
 The YAML files are all in the same folder:
 
 ```
-kubectl apply -f labs\ingress\specs\simple-web\
+kubectl apply -f labs/ingress/specs/simple-web/
 ```
 
 Run this to show your Services:
@@ -73,7 +73,7 @@ The `simple-web` Service has a cluster IP address, which can be reached by any P
 
 Ingress objects are fairly straightforward:
 
-- [labs\ingress\specs\ingress-local.yaml](./specs/ingress-local.yaml) - routes traffic for the domain `simple-web.local` into the `simple-web` Service, using a named port
+- [labs/ingress/specs/ingress-local.yaml](./specs/ingress-local.yaml) - routes traffic for the domain `simple-web.local` into the `simple-web` Service, using a named port
 
 📋 Create the Ingress object and print out its details
 
@@ -83,7 +83,7 @@ Ingress objects are fairly straightforward:
 It's the same `apply` command for all resources:
 
 ```
-kubectl apply -f labs\ingress\specs\ingress-local.yaml
+kubectl apply -f labs/ingress/specs/ingress-local.yaml
 ```
 
 And you can print the details of the object with:
@@ -140,7 +140,7 @@ kubectl get nodes
 You can deploy the app with the same model you used with Docker Desktop:
 
 ```
-kubectl apply -f labs\ingress\specs\simple-web\
+kubectl apply -f labs/ingress/specs/simple-web/
 ```
 
 But you'll need a different Ingress object. We want to use a DNS name that routes to the public IP address for the Application Gateway.
@@ -164,7 +164,7 @@ az network public-ip update -n appgw-appgwpip -g <aks-mc-rg-namge> --dns-name <d
 
 The response shows the `fqdn` field which will be the domain name suffix for your Ingress rule.
 
-Now you'll need to edit [labs\ingress\specs\ingress-aks](labs\ingress\specs\ingress-aks.yaml) and replace `[PLACEHOLDER]` with your FQDN.
+Now you'll need to edit [labs/ingress/specs/ingress-aks](labs/ingress/specs/ingress-aks.yaml) and replace `[PLACEHOLDER]` with your FQDN.
 
 📋 Create the Ingress object and print the details. Browse to the domain name - do you see the app?
 
@@ -175,7 +175,7 @@ Now you'll need to edit [labs\ingress\specs\ingress-aks](labs\ingress\specs\ingr
 Make sure you've set your own DNS name in the YAML and then apply it:
 
 ```
-kubectl apply -f labs\ingress\specs\ingress-aks.yaml
+kubectl apply -f labs/ingress/specs/ingress-aks.yaml
 ```
 
 Your Ingress object should show the DNS name and the public IP address:

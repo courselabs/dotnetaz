@@ -1,6 +1,6 @@
 # Lab Solution
 
-You need to set the access mode and the storage class name in the PCV:
+You need to set the access mode and the storage class name in the PVC:
 
 ```
 apiVersion: v1

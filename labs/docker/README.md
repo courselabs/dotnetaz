@@ -4,7 +4,7 @@ How would you run a .NET app on an Azure VM? You'd have to provision the VM, the
 
 ## Reference
 
-- [Docker Desktop]() - the easiest way to run containers on your local machine
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) - the easiest way to run containers on your local machine
 - [Getting Started guide](https://docs.docker.com/get-started/) from Docker
 - [.NET container images](https://hub.docker.com/_/microsoft-dotnet) - .NET Core & 5.0+ cross-platform images
 - [.NET Framework container images](https://hub.docker.com/_/microsoft-dotnet-framework) - .NET 3.5 & 4.8 Windows images
@@ -151,7 +151,7 @@ The app is very simple, but you can improve it. Edit code in the `src/simple-web
 
 Container images are static packages - they're really just ZIP files with all your application binaries and dependencies, the runtime and operating system tools. Image names often include a version number, and you can publish different images for different versions of your app. Wherever you run a container from the image, the app will always behave in the same way, because the starting point is always the same.
 
-Typically things change between environments though, so you need a way to inject configuration settings into the app when you run a container. The simplest way to do that is with environment variables, which you can set when you run the container and get read by the .NET configuration system. The simple web app uses a config setting to show the environment name - run a new container listening on port 8084 which shows the environment name `PROD` on the homepage.
+Typically things change between environments though, so you need a way to inject configuration settings into the app when you run a container. The simplest way to do that is with _environment variables_, which you can set when you run the container and get read by the .NET configuration system. The simple web app uses a config setting to show the environment name - run a new container listening on port `8084` which shows the environment name `PROD` on the homepage.
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
 

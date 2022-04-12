@@ -10,7 +10,7 @@ The appsettings.json file has this setting:
 }
 ```
 
-You access that in code using the key `App:Environment`. You can also use that as the name of an environment variable, but not all platforms like having a colon in the name so you can also use `App__Environment`.
+You access that in code using the key `App:Environment`. You can  use that as the name of an environment variable too, but not all platforms like having a colon in the name so you can also use `App__Environment`.
 
 You'll see that in the [Dockerfile](/src/simple-web/Dockerfile), and this is how you override the setting in the image for one container:
 

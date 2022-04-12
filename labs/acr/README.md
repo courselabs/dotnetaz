@@ -63,7 +63,7 @@ docker image pull docker.io/nginx:alpine
 
 You can store a copy of that image in ACR, but you need to change the name to use your ACR domain instead of Docker Hub. The `tag` command does that:
 
-_Make sure you use your ACR domain name:_
+_Make sure you use **your** ACR domain name:_
 
 ```
 docker image tag docker.io/nginx:alpine <acr-name>.azurecr.io/labs-acr/nginx:alpine-2204
@@ -112,8 +112,13 @@ docker image push <acr-name>.azurecr.io/labs-acr/nginx:alpine-2204
 
 </details><br/>
 
+You can run a container from that image with this command:
 
-docker run -d -p 8080:80 my-acr.azurecr.io/labs-acr/nginx:alpine-2204
+```
+docker run -d -p 8080:80 <acr-name>.azurecr.io/labs-acr/nginx:alpine-2204
+```
+
+Any container runtime which has access to your ACR can run the same app from the image.
 
 ## Build and Push a Custom Image
 
@@ -166,8 +171,14 @@ ___
 
 ## Cleanup
 
-You can delete the RG for this lab to remove all the resources:
+You can delete the RG for this lab to remove all the Azure resources, including your ACR instance and its images:
 
 ```
 az group delete -y -n labs-acr
+```
+
+And run this command to remove all your local Docker containers:
+
+```
+docker rm -f $(docker ps -aq)
 ```

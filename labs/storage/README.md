@@ -1,6 +1,6 @@
 # Kubernetes Storage
 
-Kubernetes has lots of abstractions to model your app, so you can describe it in a generic way that works on all clusters. For storage you can define different types of _volume_ which represent storage unit, and mount them into your application Pods. The storage mounts appear as part of the container filesystem, but they're actually stored outside of the container. This lets you push configuration settings into the container as read-only files, and store application data outside of the container.
+Kubernetes has lots of abstractions to model your app, so you can describe it in a generic way that works on all clusters. For storage you can define different types of _volume_ which represent storage units, and mount them into your application Pods. The storage mounts appear as part of the container filesystem, but they're actually stored outside of the container. This lets you push configuration settings into the container as read-only files, and store application state outside of the container.
 
 ## Reference
 
@@ -29,11 +29,14 @@ While that's creating we'll work with the local cluster. Be sure you have Docker
 
 ```
 kubectl config use-context docker-desktop
+
+# check this is your local cluster:
+kubectl get nodes
 ```
 
 ## Volumes and VolumeMounts
 
-We'll be using a simple app which reads config files and writes to files in various locations. It's a simple .NET background worker app - the main code is in [Worker.cs](/src/queue-worker/src/Worker.cs). The app is available on Docker Hub in a multi-arch image [courselabs/queue-worker](https://hub.docker.com/r/courselabs/queue-worker/tags).
+We'll be using a simple app which reads config files and writes to files in various locations. It's a .NET 6.0 background worker app - the main code is in [Worker.cs](/src/queue-worker/src/Worker.cs). The app is available on Docker Hub in a multi-arch image [courselabs/queue-worker](https://hub.docker.com/r/courselabs/queue-worker/tags).
 
 The first version we'll use mounts a ConfigMap to load config settings:
 
@@ -67,11 +70,11 @@ kubectl logs <pod-name>
 
 </details><br/>
 
-You should see the application log that it is writing data every 10 seconds.
+You should see from the application logs that it is writing data every 20 seconds.
 
 You can execute commands inside a running container with Kubernetes using the `exec` command. Kubernetes runs the command and prints the output it gets back.
 
-Run this to show the files the app is writing inside the container:
+Run this to show the contents of the files the app is writing inside the container:
 
 ```
 kubectl exec -it deploy/queue-worker -- cat /mnt/cache/app.cache
@@ -85,7 +88,7 @@ This is all looking good, so far.
 
 When you write data in containers, the storage has the same lifecycle as the container. When your Pod gets replaced you'll get a new container with a new filesystem, and any data written by the previous container will be lost. That will happen every time you update to use a new container image, or change some other part of the Pod spec.
 
-📋 Delete your queue-worker Pod and wait for the Deployment to create a replacement Pod. When it's running, print out the contents of the app.db file in the new Pod.
+📋 Delete your queue-worker Pod and wait for the Deployment to create a replacement Pod. When it's running, print out the contents of the `app.db` file in the new Pod.
 
 <details>
   <summary>Not sure how?</summary>
@@ -120,7 +123,7 @@ A new version of the application model uses the same container image and ConfigM
 
 - [/labs/storage/specs/v2/pvc.yaml](./specs/v2/pvc.yaml) - models the PersistentVolumeClaim (PVC)
 
-This is new terminology but its all part of how Kubernetes models storage. _EmptyDir_ is a piece of storage which has the lifecycle of the Pod, so if the Pod needs to restart the container then the data survives. _PersistentVolumeClaim_ is a request for the cluster to provide some storage - we don't specify any type of storage here, just the amount we need.
+This is new terminology but its all part of how Kubernetes models storage. _EmptyDir_ is a piece of storage which has the lifecycle of the Pod, so if the Pod needs to restart the container then the data survives. _PersistentVolumeClaim_ is a request for the cluster to provide some storage the Pod can attach to - we don't specify any type of storage here, just the amount we need.
 
 📋 Deploy the new version of the app on Docker Desktop. Let the Pod run for a while, then delete it. Check the database and cache files in the replacement Pod. Has the data been carried over from the previous Pod?
 

@@ -18,7 +18,7 @@ Make sure you have Docker Desktop configured to run Kubernetes (see the [setup g
 
 Kubectl has integrated help like the Docker and Azure CLIs, but it uses a different syntax where the action comes before the type of object.
 
-Run this to list all the nodes in your cluster:
+Run this to list all the nodes in your cluster - you should see a single node which is your machine running Docker Desktop:
 
 ```
 kubectl get nodes
@@ -27,7 +27,7 @@ kubectl get nodes
 The `get` command returns a list of resources. The default output is human-readable, but you can change the format like you can with `az` which helps with automation. The next level of detail comes from the `describe` command, which you run with a resource type and name:
 
 ```
-kubectl describe node <node-name>
+kubectl describe node <your-node-name>
 ```
 
 > You'll see a lot of detail about the node, including the OS and CPU architecture. Kubernetes is a cross-platform system, a cluster can be composed of multiple nodes running different OS and CPU architectures, so a single cluster can run Windows and Linux containers.
@@ -91,7 +91,7 @@ We can't browse to the app yet, because Pods aren't accessible on the network. T
 
 _Services_ are the Kubernetes network abstraction. A Service listens for incoming traffic (from inside or outside the cluster, depending on the type of Service) and forwards it on to a Pod.
 
-Services are loosely-couple to Pods using labels. A Service is defined with a label selector which can match zero or many Pods. Matching Pods are potential targets for routing incoming traffic. We added a label to the simple web Pod:
+Services are loosely-coupled to Pods using labels. A Service is defined with a label selector which can match zero or many Pods. Matched Pods are potential targets for routing incoming traffic. We added a label to the simple web Pod:
 
 ```
 kubectl get pods --show-labels
@@ -128,7 +128,7 @@ There's a lot more you can do with Kubernetes, but even this simple app shows yo
 
 ## ConfigMaps
 
-There's one more resource we'll walk through - the _ConfigMap_ which you can use to isolate application configuration from the Docker image and the Pod spec. ConfigMaps are static pieces of data which get stored in the cluster. They can contain complex files like appsettings.json or web.config, or they can store simple key-value pairs.
+There's one more resource we'll walk through - the _ConfigMap_ which you can use to isolate application configuration from the Docker image and the Pod spec. ConfigMaps are static pieces of data which get stored in the cluster. They can contain complex files like `appsettings.json` or `web.config`, or they can store simple key-value pairs.
 
 - [labs/kubernetes/specs/configmap.yaml](./specs/configmap.yaml) - defines a ConfigMap we can use with the web app to set the application environment.
 
@@ -165,7 +165,7 @@ ConfigMaps aren't linked to Pods - a ConfigMap can be used by many Pods, or no P
 This will fail because environment variables can't be changed in an existing Pod:
 
 ```
-kubectl apply -f .\labs\kubernetes\specs\update\pod.yaml
+kubectl apply -f ./labs/kubernetes/specs/update/pod.yaml
 ```
 
 So delete the Pod first:
@@ -177,7 +177,7 @@ kubectl delete pod simple-web
 And then create the updated version:
 
 ```
-kubectl apply -f .\labs\kubernetes\specs\update\pod.yaml
+kubectl apply -f ./labs/kubernetes/specs/update/pod.yaml
 ```
 
 </details><br/>
@@ -192,7 +192,7 @@ It's not an issue in a real application though because you don't often use Pods 
 
 - [labs/kubernetes/specs/update/deployment.yaml](./specs/update/deployment.yaml) - the Deployment object uses a label selector to find the Pods it manages
 
-Delete your application Pod and create the Deployment. Verify the app is still available at http://localhost:8099 and it's using the default environment name. Then change your Deployment to load the ConfigMap into the Pod environment variables and redeploy. Do you need to delete anything this time?
+Delete your application Pod and create the Deployment. Verify the app is still available at http://localhost:8099 and its using the default environment name. Then change your Deployment to load the ConfigMap into the Pod environment variables and redeploy. Do you need to delete anything this time?
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
 

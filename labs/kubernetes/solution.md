@@ -5,7 +5,7 @@ Start by deleting the existing Pod and creating the Deployment:
 ```
 kubectl delete pod simple-web
 
-kubectl apply -f .\labs\kubernetes\specs\update\deployment.yaml
+kubectl apply -f ./labs/kubernetes/specs/update/deployment.yaml
 ```
 
 Check the Pods now and you'll see one with a random name; that was created by the Deployment:
@@ -23,7 +23,7 @@ This sample solution adds the ConfigMap reference to the Pod template, loading t
 You can change the Deployment object by running `apply` again:
 
 ```
-kubectl apply -f .\labs\kubernetes\lab\deployment.yaml
+kubectl apply -f ./labs/kubernetes/lab/deployment.yaml
 ```
 
 List the Pods again and you'll see a different random name - the Pod spec has changed, so the Deployment deletes the old Pod and creates a new one: 
