@@ -14,4 +14,6 @@ az aks create -n $env:AKS_NAME -g $env:RG_NAME -l $env:REGION `
   --node-vm-size $env:AKS_NODE_SIZE `
   --no-ssh-key --yes
   
-# TODO - attach AKS to ACR for private images
+echo 'Attaching ACR to AKS' | timestamp
+az aks update -g $env:RG_NAME -n $env:AKS_NAME `
+  --attach-acr $env:ACR_NAME --yes  

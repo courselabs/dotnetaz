@@ -1,7 +1,7 @@
 trigger:
  - main
 
-pool: linux01
+pool: linux02
 
 steps:
  - task: Bash@3
@@ -29,3 +29,10 @@ steps:
       az version
       sudo docker version
       kubectl version --client
+
+ - task: Bash@3
+   displayName: Check accounts
+   inputs:
+    targetType: inline
+    script: |
+      az account list
