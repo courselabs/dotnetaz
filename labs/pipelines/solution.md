@@ -2,7 +2,7 @@
 
 In my sample solution I've added the `az aks update` command, with the `attach-acr` parameter:
 
-- [labs/pipelines/lab/create-services.ps1](labs/pipelines/lab/create-services.ps1)
+- [labs/pipelines/lab/create-services.ps1](./lab/create-services.ps1)
 
 You can edit your pipeline YAML to use that script file instead, or edit the existing script in `labs/pipelines/scripts/create-services.ps1`. 
 

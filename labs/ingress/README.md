@@ -35,7 +35,7 @@ That will take a while to run, so we'll work with Ingress objects on our local c
 Ingress controllers are optional in most Kubernetes environments - Docker Desktop doesn't install one by default, but you can enable ingress by deploying this:
 
 ```
-kubectl apply -f /labs/ingress/specs/local-ingress-controller
+kubectl apply -f labs/ingress/specs/local-ingress-controller/
 ```
 
 That will create a lot of resources we haven't covered, but you can treat your ingress controller as a black box for now. It's job is to watch out for Ingress objects and set up the routing rules, linking domain names to your application Services.
@@ -164,7 +164,7 @@ az network public-ip update -n appgw-appgwpip -g <aks-mc-rg-namge> --dns-name <d
 
 The response shows the `fqdn` field which will be the domain name suffix for your Ingress rule.
 
-Now you'll need to edit [labs/ingress/specs/ingress-aks](labs/ingress/specs/ingress-aks.yaml) and replace `[PLACEHOLDER]` with your FQDN.
+Now you'll need to edit [labs/ingress/specs/ingress-aks](./specs/ingress-aks.yaml) and replace `[PLACEHOLDER]` with your FQDN.
 
 📋 Create the Ingress object and print the details. Browse to the domain name - do you see the app?
 

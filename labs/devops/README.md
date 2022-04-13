@@ -67,7 +67,7 @@ Pipelines can be put together in the UI or written in YAML. The YAML option is b
 
 There's a simple pipeline in this repo which just prints some tool versions:
 
-- [audit-tools.yaml](./pipelines/audit-tools.yml)
+- [audit-tools.yml](./pipelines/audit-tools.yml)
 
 The definition is in the repo **but you need to create the pipeline in the web UI first**:
 
@@ -75,7 +75,7 @@ The definition is in the repo **but you need to create the pipeline in the web U
 - under _Where is your code_ - select _Azure Repos Git_
 - select your `dotnetaz` repository
 - select _Existing Azure Pipelines YAML file_
-- leave the branch as `main` and enter the path: `labs/devops/pipelines/audit-tools.yaml`
+- leave the branch as `main` and enter the path: `labs/devops/pipelines/audit-tools.yml`
 - click _Continue_ - you'll see the Pipeline YAML
 - click _Run_ to run the pipeline
 
@@ -138,7 +138,7 @@ We'll switch the exising pipeline to use the new definition.
 
 The DevOps UI isn't always very friendly :)
 
-Browse to your Pipeline, select the vertical ellipsis next to _Run pipeline_ and click _Settings_. Change the path to `labs/devops/pipelines/audit-tools-vmss.yaml`
+Browse to your Pipeline, select the vertical ellipsis next to _Run pipeline_ and click _Settings_. Change the path to `labs/devops/pipelines/audit-tools-vmss.yml`
 
 </details><br/>
 

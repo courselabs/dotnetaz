@@ -2,7 +2,7 @@
 
 In my sample solution I've added another task to list accounts:
 
-- [labs/devops/lab/audit-tools-vmss.yaml](labs/devops/lab/audit-tools-vmss.yaml)
+- [labs/devops/lab/audit-tools-vmss.yml](labs/devops/lab/audit-tools-vmss.yml)
 
 The pipeline is set up with a branch trigger, so when you push changes it will start a pipeline run.
 

@@ -20,6 +20,7 @@ parameters:
   type: number
   default: 2
   values:
+  - 1
   - 2
   - 4
 - name: aksNodeSize

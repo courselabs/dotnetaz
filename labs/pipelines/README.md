@@ -14,7 +14,7 @@ Azure DevOps has lots of built-in tasks you can use to simplify your pipelines -
 
 To make your pipelines as flexible as possible, you'll want to parameterize them so you can run the same pipeline with different settings. The pipeline syntax separates _parameters_ which appear in the UI and _variables_ which can be computed. Variable values can be copied from parameters, and they get surfaced as environment variables inside scripts:
 
-- [labs/pipelines/pipelines/parameters.yml](labs/pipelines/pipelines/parameters.yml) - sets up some parameters and variables, with tasks to install PowerShell and run a simple PowerShell script
+- [labs/pipelines/pipelines/parameters.yml](./pipelines/parameters.yml) - sets up some parameters and variables, with tasks to install PowerShell and run a simple PowerShell script
 
 📋 Create a new pipeline using this definition and run it. What is the job output?
 
@@ -55,7 +55,7 @@ It's been assigned the _Contributor_ role
 
 The Azure CLI task is one you do want to use - it runs a PowerShell or Bash script, but it authenticates the Azure CLI first using your service connection:
 
-- [labs/pipelines/pipelines/run-azure-cli.yml](labs/pipelines/pipelines/run-azure-cli.yml) - uses the task to run a PowerShell script which prints your Azure accounts 
+- [labs/pipelines/pipelines/run-azure-cli.yml](./pipelines/run-azure-cli.yml) - uses the task to run a PowerShell script which prints your Azure accounts 
 
 📋 Create and run a new pipeline using this definition. Does it authenticate to Azure correctly?
 
@@ -74,13 +74,13 @@ The service connection has permission to create resources, so everything we've d
 
 This script creates the resources we would need to deploy a containerized application:
 
-- [labs/pipelines/scripts/create-services.ps1](labs/pipelines/scripts/create-services.ps1)
+- [labs/pipelines/scripts/create-services.ps1](./scripts/create-services.ps1)
 
 If you're not familiar with PowerShell, it should still be fairly clear what's happening. We create an RG, then an ACR instances to store images and then an AKS cluster. The `echo` commands will print friendly output in the job and because all the options use environment variables we can run the same script locally.
 
 This pipeline sets up parameters for all the variables and then runs the PowerShell script within an Azure CLI task:
 
-- [labs/pipelines/pipelines/create-services.yml](labs/pipelines/pipelines/create-services.yml)
+- [labs/pipelines/pipelines/create-services.yml](./pipelines/create-services.yml)
 
 📋 Create a new pipeline using this definition. Run it and supply parameters to create a 2-node cluster. Monitor the output to check everything runs.
 

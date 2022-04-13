@@ -9,7 +9,7 @@ spec:
     # TODO - replace with your own DNS
     # e.g. if your FQDN is labs-ingress-01.eastus.cloudapp.azure.com
     # then the host will be labs-ingress-01.eastus.cloudapp.azure.com
-  - host: labs-ingress-01.eastus.cloudapp.azure.com #[PLACEHOLDER]
+  - host: #[PLACEHOLDER]
     http:
       paths:
       - path: /
