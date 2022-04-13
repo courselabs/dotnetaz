@@ -33,9 +33,9 @@ These are hands-on resources to help you learn .NET on Azure.
 
 ## Azure DevOps Quickstart
 
-- [DevOps Pipelines]
-- [Automating Deployments]
-- [Hackathon!]
+- [DevOps Pipelines](labs/devops/README.md)
+- [Automating Deployments](labs/pipelines/README.md)
+- [Hackathon!](hackathon/README.md)
 
 #### Credits
 
