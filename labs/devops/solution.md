@@ -2,7 +2,7 @@
 
 In my sample solution I've added another task to list accounts:
 
-- [labs\devops\lab\audit-tools-vmss.yaml](labs\devops\lab\audit-tools-vmss.yaml)
+- [labs/devops/lab/audit-tools-vmss.yaml](labs/devops/lab/audit-tools-vmss.yaml)
 
 The pipeline is set up with a branch trigger, so when you push changes it will start a pipeline run.
 
@@ -11,7 +11,7 @@ You can copy the YAML from the solution into the original file and then push you
 ```
 git add --all
 
-git commit -m 'Pipelines lab'
+git commit -m 'DevOps lab'
 
 git push devops main
 ```

@@ -15,7 +15,7 @@ spec:
     # ...
 ```
 
-The sample file in [labs/storage/lab/pvc-azurefile.yaml](./lab/pvc-azurefile.yaml) does that. The updated [labs/storage/lab/deployment.yaml](./lab/deployment.yaml)] uses the new PVC.
+The sample file in [labs/storage/lab/pvc-azurefile.yaml](./lab/pvc-azurefile.yaml) does that. The updated [labs/storage/lab/deployment.yaml](./lab/deployment.yaml) uses the new PVC.
 
 Update the deployment:
 
@@ -28,7 +28,7 @@ kubectl get pods --watch
 It will take a minute or two for the new Azure Files storage to get provisioned. When the new Pod is running you can delete it:
 
 ```
-kubectl delte pod <pod-name>
+kubectl delete pod <pod-name>
 ```
 
 And then check the database file in the new Pod:

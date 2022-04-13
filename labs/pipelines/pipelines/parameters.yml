@@ -1,0 +1,41 @@
+trigger: none
+
+pool: linux01
+
+parameters:
+- name: region
+  displayName: Region
+  type: string
+  default: 'centralus'
+- name: resourceGroupName
+  displayName: Resource Group name
+  type: string
+- name: vmCount
+  displayName: Number of VMs
+  type: number
+  default: 2
+  values:
+  - 2
+  - 4
+
+variables:
+  REGION:  ${{ parameters.region }}
+  RG_NAME: ${{ parameters.resourceGroupName }}
+  VM_COUNT: ${{ parameters.vmCount }}
+
+jobs:
+- job: PrintParameters
+
+  steps:
+  - task: Bash@3
+    displayName: Install PowerShell
+    inputs:
+      targetType: inline
+      script: sudo snap install powershell --classic
+
+  - task: PowerShell@2
+    displayName: Print parameters
+    inputs:
+      targetType: inline
+      script: |
+        echo "Will create: $env:VM_COUNT VMs in RG: $env:RG_NAME, region: $env:REGION"

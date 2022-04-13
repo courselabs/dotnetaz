@@ -124,7 +124,7 @@ When authorization completes, set up the pool:
 
 This pipeline uses the agent pool with the name `linux01`:
 
-- [labs\devops\pipelines\audit-tools-vmss.yml](labs\devops\pipelines\audit-tools-vmss.yml)
+- [labs/devops/pipelines/audit-tools-vmss.yml](labs/devops/pipelines/audit-tools-vmss.yml)
 
 There's more going on than in the original piprline, because we need to install the tools we want - the Microsoft hosted agents already have those installed.
 
@@ -153,3 +153,15 @@ When the job is running, check the output - you'll see all the tools being insta
 Edit the pipeline steps in your YAML file to run some more `az` commands. Does the pipeline run when you've made your edits? Can you list and create resource groups in a pipeline job?
 
 > Stuck? Try [hints](hints.md) or check the [solution](solution.md).
+
+___
+
+## Cleanup
+
+**Don't delete the RG if you're continuing with the next lab - if you do then there will be no VMs for Azure DevOps to use for pipeline runs**
+
+If you're not continuing, then you can delete the RG:
+
+```
+az group delete -y -n labs-devops
+```

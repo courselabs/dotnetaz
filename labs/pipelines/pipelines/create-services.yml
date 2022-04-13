@@ -1,0 +1,61 @@
+trigger: none
+
+pool: linux01
+
+parameters:
+- name: region
+  displayName: Region
+  type: string
+  default: 'centralus'
+- name: resourceGroupName
+  displayName: Resource Group name
+  type: string
+  default: 'labs-pipeline'
+- name: acrName
+  displayName: ACR name
+  type: string
+  default: labsacr0023
+- name: aksNodeCount
+  displayName: AKS node count
+  type: number
+  default: 2
+  values:
+  - 2
+  - 4
+- name: aksNodeSize
+  displayName: AKS node size
+  type: string
+  default: 'Standard_D2_v2'
+
+variables:
+  REGION:  ${{ parameters.region }}
+  RG_NAME: ${{ parameters.resourceGroupName }}
+  ACR_NAME: ${{ parameters.acrName }}
+  AKS_NODE_COUNT: ${{ parameters.aksNodeCount }}
+  AKS_NODE_SIZE: ${{ parameters.aksNodeSize }}
+  AKS_NAME: ${{ parameters.resourceGroupName }}-aks01
+  ACR_SKU: Basic
+
+jobs:
+- job: CreateServices
+
+  steps:
+  - task: Bash@3
+    displayName: Install Azure CLI
+    inputs:
+      targetType: inline
+      script: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+  - task: Bash@3
+    displayName: Install PowerShell
+    inputs:
+      targetType: inline
+      script: sudo snap install powershell --classic
+  
+  - task: AzureCLI@2
+    displayName: Create Services
+    inputs:  
+      azureSubscription: spn-az-devops
+      scriptType: pscore
+      scriptLocation: scriptPath
+      scriptPath: ./labs/pipelines/scripts/create-services.ps1

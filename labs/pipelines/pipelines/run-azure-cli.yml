@@ -1,0 +1,26 @@
+trigger: none
+
+pool: linux01
+
+steps:
+ - task: Bash@3
+   displayName: Install Azure CLI
+   inputs:
+    targetType: inline
+    script: |
+      curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+ - task: Bash@3
+   displayName: Install PowerShell
+   inputs:
+    targetType: inline
+    script: sudo snap install powershell --classic
+ 
+ - task: AzureCLI@2
+   displayName: Deploy application
+   inputs:  
+     azureSubscription: spn-az-devops
+     scriptType: pscore
+     scriptLocation: inlineScript
+     inlineScript: |
+       az account list -o table

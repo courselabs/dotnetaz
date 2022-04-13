@@ -74,7 +74,7 @@ docker image tag docker.io/nginx:alpine <acr-name>.azurecr.io/labs-acr/nginx:alp
 Now you have two tags for the Nginx image:
 
 ```
-docker image ls --filter reference=nginx --filter reference=*/labs-acr/*
+docker image ls --filter reference=nginx --filter reference=*/labs-acr/nginx
 ```
 
 Your ACR tag and the Docker Hub tag both have the same image ID; tags are like aliases and one image can have many tags.
