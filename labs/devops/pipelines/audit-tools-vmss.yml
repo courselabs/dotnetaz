@@ -1,7 +1,7 @@
 trigger:
  - main
 
-pool: linux01
+pool: linux02
 
 steps:
  - task: Bash@3
