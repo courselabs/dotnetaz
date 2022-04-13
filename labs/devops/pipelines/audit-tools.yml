@@ -1,8 +1,7 @@
 trigger:
  - main
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: linux02
 
 steps:
  - task: Bash@3
