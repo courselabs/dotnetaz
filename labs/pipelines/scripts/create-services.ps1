@@ -15,5 +15,5 @@ az aks create -n $env:AKS_NAME -g $env:RG_NAME -l $env:REGION `
   --no-ssh-key --yes
   
 echo 'Attaching ACR to AKS' | timestamp
-$acrIaz aks update -g $env:RG_NAME -n $env:AKS_NAME `
+az aks update -g $env:RG_NAME -n $env:AKS_NAME `
   --attach-acr $env:ACR_NAME --yes  
